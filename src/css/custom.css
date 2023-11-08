@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+:root {
+    --bg-color: #DAE3E5;
+    --time-component: #04080F;
+    --text: #BBD1EA;
+    --extra-1: #A1C6EA;
+    --extra-2: #507DBC;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+}
+
+.title {
+    position: absolute;
+    top: 20px;
+    
+    margin: 15px;
+}
+
+#root {
+    width: 100%;
+    height: 100vh;
+
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* flex-wrap: wrap; */
+}
+
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*--------------------Restart Bootstrap Components-----------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+
+hr {
+    margin: 0 !important;
+    margin-bottom: 10px !important;
+}
+
+
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*---------------------------BEM components------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+
+.timerCard__elements {
+    /* position: absolute;
+    top: calc(50%);
+    left: calc(50%);
+    transform: translate(-50%, -50%); */
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 320px;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+.timeElement {
+    position: relative;
+    height: 90px;
+    width: 90px;
+    background-color: var(--time-component);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeElement__time {
+    font-size: 52px;
+    color: var(--text);
+    margin-bottom: 0px;
+}
+
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*----------------------------Timer Card---------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+
+.timerCard{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    width: 380px;
+    height: 650px;
+    padding: 15px;
+    margin: 10px 0;
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.timerCard__data {
+    height: 100%;
+}
+
+.timerCard__img {
+    width: 100%;
+}
+
+.timerCard__data{
+    position: relative;
+    padding: 10px 10px 0 10px;
+}
+
+.timerCard__title {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.timerCard__shortDesc {
+    text-align: center;
+    margin-bottom: 0;
+    /* align-items: center; */
+}
+
+.timerCard__longDesc{
+    display: inline-block;
+    overflow-y: auto;
+    margin-bottom: 0;
+    /* min-height: 60px; */
+    max-height: 60px;
+}
+
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*---------------------------Media Queries-------------------------------*/
+/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------*/
+
+@media screen and (min-width:576px) {
+}
+
+@media screen and (min-width:768px) {
+}
+
+@media screen and (min-width:992px) {
+    .timerCard{
+        display: grid;
+        grid-template-columns: 0.7fr 0.7fr 0.7fr 25px 1fr 1fr;
+        grid-template-rows: 1fr 1.5fr 1.5fr;
+        grid-template-areas: 
+            "a a a b c c"
+            "a a a b c c"
+            "d d d d d d";
+        width: 650px;
+        height: 350px;
+    }
+
+    .timerCard__img {
+        width: 100%;
+
+        grid-area: a;
+    }
+
+    .timerCard__data{
+        grid-area: c;
+    }
+
+    .timerCard__elements{
+        padding-top: 10px;
+        justify-content: initial;
+        grid-area: d;
+        flex-wrap: nowrap;
+        min-width: 100%;
+        justify-content: center;
+    }
+    .timeElement{
+        height: 90px;
+        width: 90px;
+    }
+    .timerCard__longDesc{
+        min-height: 100px;
+    }
+}
+
+@media screen and (min-width:1200px) {
+}
+
+
+@media screen and (min-width:1400px) {
+}
+
