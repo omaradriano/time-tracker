@@ -7,9 +7,6 @@ const App = () => {
         <>  
             <h1 className="title">Time Tracker</h1>
             <TimerCard />
-            <TimerCard />
-            <TimerCard />
-            <TimerCard />
         </>
     )
 }
