@@ -9,14 +9,16 @@ const TimerCard = () => {
     const [time, setTime] = useState(0)
     const [timeOn, setTimeOn] = useState(false)
     useEffect(() => {
-        secondsDiff('2023-11-08T16:00:00')
-            .then(res => {
-                setTime(res)
-                setTimeOn(true)
-            })
-            .catch(e => {
-                console.log(e)
-            })
+        // secondsDiff('2023-11-08T17:00:00')
+        //     .then(res => {
+        //         setTime(res)
+        //         setTimeOn(true)
+        //     })
+        //     .catch(e => {
+        //         console.log(e)
+        //     })
+        setTime(new Date('2023-11-08T20:00:00'))
+        setTimeOn(true)
     }, [])
     // console.log(time)
     if (timeOn) {
@@ -32,7 +34,7 @@ const TimerCard = () => {
                         <p className="timerCard__longDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque quibusdam quam quaerat voluptas quos rem at placeat minus harum reprehenderit!</p>
                     </div>
                     {/* {timeOn === false ? <TimeElements seconds={time}/> : <TimeElements seconds={0}/>} */}
-                    <TimeElements seconds={time} />
+                    <TimeElements expectedDate={time} />
                 </div>
             </>
         )
