@@ -1,31 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 // import convertSeconds from "../utils/convertSeconds.js"
 
 const TimeElements = ({ expectedDate }) => {
 
-    // const calculateLeftTime = (seconds) => {
-    //     return {
-    //         dias: Math.floor(Math.floor(seconds / 86400)),
-    //         horas: Math.floor((seconds % 86400) / 3600),
-    //         minutos: Math.floor((seconds % 3600) / 60),
-    //         segundos: seconds % 60
-    //     }
-    // }
-    // let diffSeconds = Math.floor(expectedDate.getTime() / 1000) - Math.floor(new Date().getTime() / 1000)
-
-    // const [leftTime, setLeftTime] = useState(diffSeconds - 1)
-    // const [renderTime, setRenderTime] = useState(calculateLeftTime(diffSeconds - 1))
-    // useEffect(() => {
-    //     let timer = setInterval(() => {
-    //         setRenderTime(calculateLeftTime(leftTime))
-    //         setLeftTime(leftTime - 1)
-    //         console.log(leftTime)
-    //     }, 1000)
-    //     return () => clearInterval(timer)
-    // }, [leftTime])
-
-    //Opción generada por ChatGPT
-
+    //Calcular el tiempo restante. Devuelve objeto con los datos en dias, horas, minutos y segundos ya para renderizar
     const calculateLeftTime = (seconds) => {
         return {
             dias: Math.floor(Math.floor(seconds / 86400)),
@@ -35,15 +13,18 @@ const TimeElements = ({ expectedDate }) => {
         };
     };
 
+    //Función que calcula únicamente los segundos restantes, en caso de llegar a cero, ahí se queda. 
     const calculateDiffSeconds = () => {
         const currentTime = Math.floor(new Date().getTime() / 1000);
         const targetTime = Math.floor(expectedDate.getTime() / 1000);
         return Math.max(targetTime - currentTime, 0); //Calcula el maximo de los dos valores ingresados como parametro
     };
 
+    //Hooks usados para medir el tiempo y el contador inverso
     const [leftTime, setLeftTime] = useState(calculateDiffSeconds());
     const [renderTime, setRenderTime] = useState(calculateLeftTime(leftTime));
 
+    //useEffect que vigila el tiempo para renderizar los datos cada segundo
     useEffect(() => {
         const timer = setInterval(() => {
             setLeftTime((prevLeftTime) => Math.max(prevLeftTime - 1, 0));
@@ -52,10 +33,26 @@ const TimeElements = ({ expectedDate }) => {
         return () => clearInterval(timer);
     }, []);
 
+    //Hook que vigila los segundos restantes y actualiza el componente.
     useEffect(() => {
         setRenderTime(calculateLeftTime(leftTime));
     }, [leftTime]);
 
+    //Verifica si la pestaña es visible. En caso de ser visible de nuevo, vuelve a actualizar los segundos restantes para evitar el desfase de tiempo cuando se encuentra inactiva.
+    function handleVisibility() {
+        if (document.visibilityState === "visible") {
+            setLeftTime(calculateDiffSeconds());
+            console.log('Ahora es visible')
+        }
+    }
+    //Ejecuta handleVisibility
+    useEffect(() => {
+        document.addEventListener("visibilitychange", handleVisibility);
+        return () => document.removeEventListener('visibilitychange', handleVisibility)
+    }, [document.visibilityState])
+
+
+    //Renderizado de los componentes
     return (
         <>
             <div className="timerCard__elements">

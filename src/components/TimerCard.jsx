@@ -1,11 +1,11 @@
-import TimeElements from "./TimeElements.jsx"
-import testimage from '../assets/cellphone.jpg'
 import { useEffect, useState } from "react"
-import secondsDiff from "../utils/getTime.js"
+import testimage from '../assets/cellphone.jpg'
+import TimeElements from "./TimeElements.jsx"
+
+
 
 const TimerCard = ({title, shortDesc, longDesc, date}) => {
 
-    console.log(date)
     const [time, setTime] = useState(0)
     const [timeOn, setTimeOn] = useState(false)
     useEffect(() => {
