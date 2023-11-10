@@ -3,21 +3,13 @@ import testimage from '../assets/cellphone.jpg'
 import { useEffect, useState } from "react"
 import secondsDiff from "../utils/getTime.js"
 
-const TimerCard = () => {
+const TimerCard = ({title, shortDesc, longDesc, date}) => {
 
-
+    console.log(date)
     const [time, setTime] = useState(0)
     const [timeOn, setTimeOn] = useState(false)
     useEffect(() => {
-        // secondsDiff('2023-11-08T17:00:00')
-        //     .then(res => {
-        //         setTime(res)
-        //         setTimeOn(true)
-        //     })
-        //     .catch(e => {
-        //         console.log(e)
-        //     })
-        setTime(new Date('2023-11-08T20:00:00'))
+        setTime(new Date(date))
         setTimeOn(true)
     }, [])
     // console.log(time)
@@ -28,10 +20,10 @@ const TimerCard = () => {
                     <img className="timerCard__img" src={testimage} alt="Imagen descripción" />
 
                     <div className="timerCard__data">
-                        <h2 className="timerCard__title">Title</h2>
-                        <p className="timerCard__shortDesc">Una corta descripcion del evento</p>
+                        <h2 className="timerCard__title">{title}</h2>
+                        <p className="timerCard__shortDesc">{shortDesc}</p>
                         <hr className="timerCard__hr" />
-                        <p className="timerCard__longDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque quibusdam quam quaerat voluptas quos rem at placeat minus harum reprehenderit!</p>
+                        <p className="timerCard__longDesc">{longDesc}</p>
                     </div>
                     {/* {timeOn === false ? <TimeElements seconds={time}/> : <TimeElements seconds={0}/>} */}
                     <TimeElements expectedDate={time} />
