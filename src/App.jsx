@@ -10,7 +10,7 @@ const App = () => {
             <button className="navbar-toggler offcanvasMenu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <Icon icon="menu"/>
             </button>
-            {/* <OffCanvasMenu /> */}
+            <OffCanvasMenu />
             <h1 className="title">Time Tracker</h1>
             <TimerCard
                 title='Navidad'
