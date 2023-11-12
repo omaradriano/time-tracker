@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import TimeElement from "./TimeElement.jsx";
 // import convertSeconds from "../utils/convertSeconds.js"
 
 const TimeElements = ({ expectedDate }) => {
@@ -56,18 +57,10 @@ const TimeElements = ({ expectedDate }) => {
     return (
         <>
             <div className="timerCard__elements">
-                <div className="timeElement">
-                    <p className="timeElement__time">{renderTime.dias}</p>
-                </div>
-                <div className="timeElement">
-                    <p className="timeElement__time">{renderTime.horas}</p>
-                </div>
-                <div className="timeElement">
-                    <p className="timeElement__time">{renderTime.minutos}</p>
-                </div>
-                <div className="timeElement">
-                    <p className="timeElement__time">{renderTime.segundos}</p>
-                </div>
+                <TimeElement counter={renderTime.dias}/>
+                <TimeElement counter={renderTime.horas}/>
+                <TimeElement counter={renderTime.minutos}/>
+                <TimeElement counter={renderTime.segundos}/>
             </div>
         </>
     )
